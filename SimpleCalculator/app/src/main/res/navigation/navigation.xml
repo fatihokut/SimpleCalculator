@@ -28,6 +28,11 @@
         <action
             android:id="@+id/pick_operand_to_select_operation"
             app:destination="@id/select_operation"/>
+        <argument
+            android:name="selectedOperation"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/show_result"

@@ -12,4 +12,13 @@
     <string name="show_result_title">Result</string>
     <string name="new_operation_button">New Operation</string>
 
+    <string-array name="operation_list">
+        <item>Addition</item>
+        <item>Subtraction</item>
+        <item>Multiply</item>
+        <item>Divide</item>
+        <item>Square Root</item>
+
+    </string-array>
+
 </resources>
