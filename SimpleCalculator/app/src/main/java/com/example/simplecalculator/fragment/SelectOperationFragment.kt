@@ -6,25 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.example.simplecalculator.R
+import com.example.simplecalculator.databinding.FragmentSelectOperationBinding
 import com.example.simplecalculator.viewmodel.CalculatorViewModel
 
 class SelectOperationFragment : Fragment() {
 
     private val model: CalculatorViewModel by activityViewModels()
 
+    private var selectOperationBinding: FragmentSelectOperationBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_select_operation, container, false)
-
-        val spinner: Spinner = view.findViewById(R.id.spinner)
+    ): View {
+        val binding = FragmentSelectOperationBinding.inflate(inflater, container, false)
+        selectOperationBinding = binding
 
         ArrayAdapter.createFromResource(
             requireContext(),
@@ -32,23 +32,28 @@ class SelectOperationFragment : Fragment() {
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
+            binding.spinner.adapter = adapter
         }
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                model.setActiveOperation(spinner.selectedItem.toString())
+                model.setActiveOperation(binding.spinner.selectedItem.toString())
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
         }
 
-        view.findViewById<Button>(R.id.pick_operand_btn).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.select_operation_to_pick_operand)
+        binding.pickOperandBtn.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.select_operation_to_pick_operand)
         }
 
-        return view
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        selectOperationBinding = null
+        super.onDestroyView()
     }
 
 }
