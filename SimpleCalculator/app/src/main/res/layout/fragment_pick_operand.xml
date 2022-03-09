@@ -9,10 +9,10 @@
 
     <TextView
         android:id="@+id/pick_operand_txt"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:gravity="center_horizontal"
         android:text="@string/pick_operand_title"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -27,10 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
-        android:text="EQ"
         android:gravity="center"
-        android:textSize="48sp"
+        android:text="EQ"
         android:textColor="@color/purple_700"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pick_operand_txt" />
@@ -39,10 +39,10 @@
         android:id="@+id/equation_operand_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="144dp"
-        android:text="___"
+        android:layout_marginEnd="8dp"
         android:gravity="end"
+        android:text="___"
         android:textSize="48sp"
         app:layout_constraintEnd_toStartOf="@id/equation_operation"
         app:layout_constraintTop_toBottomOf="@+id/pick_operand_txt" />
@@ -53,8 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="144dp"
-        android:text="___"
         android:gravity="start"
+        android:text="___"
         android:textSize="48sp"
         app:layout_constraintStart_toEndOf="@id/equation_operation"
         app:layout_constraintTop_toBottomOf="@+id/pick_operand_txt" />
@@ -63,11 +63,11 @@
         android:id="@+id/add_params_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginTop="144dp"
-        android:hint="Operand"
+        android:layout_marginEnd="8dp"
         android:gravity="end"
-        android:inputType="numberDecimal"
+        android:hint="Operand"
+        android:inputType="numberSigned|numberDecimal"
         app:layout_constraintEnd_toStartOf="@id/add_operand_btn"
         app:layout_constraintTop_toBottomOf="@+id/equation_operation" />
 
@@ -75,8 +75,8 @@
         android:id="@+id/add_operand_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="72dp"
         android:layout_marginTop="144dp"
+        android:layout_marginEnd="72dp"
         android:text="@string/add_operand_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/equation_operation" />

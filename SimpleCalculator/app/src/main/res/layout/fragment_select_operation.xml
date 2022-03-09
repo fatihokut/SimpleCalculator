@@ -9,10 +9,10 @@
 
     <TextView
         android:id="@+id/select_operation_txt"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:gravity="center_horizontal"
         android:text="@string/select_operation_title"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -27,16 +27,16 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="144dp"
+        android:entries="@array/operation_list"
         app:layout_constraintEnd_toStartOf="@id/pick_operand_btn"
-        app:layout_constraintTop_toBottomOf="@+id/select_operation_txt"
-        android:entries="@array/operation_list"/>
+        app:layout_constraintTop_toBottomOf="@+id/select_operation_txt" />
 
     <Button
         android:id="@+id/pick_operand_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
         android:layout_marginTop="144dp"
+        android:layout_marginEnd="36dp"
         android:text="@string/pick_operand_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/select_operation_txt" />

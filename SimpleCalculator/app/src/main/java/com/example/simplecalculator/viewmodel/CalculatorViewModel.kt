@@ -2,36 +2,43 @@ package com.example.simplecalculator.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlin.UnsupportedOperationException
 import kotlin.math.sqrt
 
 class CalculatorViewModel : ViewModel() {
 
-//    var selectedOperation = MutableLiveData<String>()
     var result = MutableLiveData<String>()
+    var activeOperation = MutableLiveData<String>()
 
-    // todo: zero division
-    // todo: negative sqrt
-    // todo: invalid inputs, empty...
-    // todo: crash = java.lang.NumberFormatException: empty String
-    // todo: round the double val round(200.3456, 3);
-    fun performOperation(operation: String,
-                         operandOne: String,
-                         operandTwo: String = "") {
-//        selectedOperation.value = operation
+    fun performOperation(
+        operandOne: String,
+        operandTwo: String = ""
+    ) {
 
-        result.value = when (operation) {
-            "Addition" ->
-                (operandOne.toDouble() + operandTwo.toDouble()).toString()
-            "Subtraction" ->
-                (operandOne.toDouble() - operandTwo.toDouble()).toString()
-            "Multiply" ->
-                (operandOne.toDouble() * operandTwo.toDouble()).toString()
-            "Divide" ->
-                (operandOne.toDouble() / operandTwo.toDouble()).toString()
-            "Square Root" ->
-                (sqrt(operandOne.toDouble())).toString()
+        when (activeOperation.value) {
+            "Addition" -> {
+                result.value = "%.2f".format((operandOne.toDouble() + operandTwo.toDouble()))
+            }
+            "Subtraction" -> {
+                result.value = "%.2f".format((operandOne.toDouble() - operandTwo.toDouble()))
+            }
+            "Multiply" -> {
+                result.value = "%.2f".format((operandOne.toDouble() * operandTwo.toDouble()))
+            }
+            "Divide" -> {
+                if (operandTwo.toDouble().equals(0.0)) throw ArithmeticException()
+                result.value = "%.2f".format((operandOne.toDouble() / operandTwo.toDouble()))
+            }
+            "Square Root" -> {
+                if (operandOne.toDouble() < 0) throw IndexOutOfBoundsException()
+                result.value = "%.2f".format((sqrt(operandOne.toDouble())))
+            }
             else ->
-                "Undefined Operation"
+                throw UnsupportedOperationException()
         }
+    }
+
+    fun setActiveOperation(operation: String) {
+        activeOperation.value = operation
     }
 }

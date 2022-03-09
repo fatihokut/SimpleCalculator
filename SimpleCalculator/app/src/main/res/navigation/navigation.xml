@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_select_operation">
         <action
             android:id="@+id/select_operation_to_pick_operand"
-            app:destination="@id/pick_operand"/>
+            app:destination="@id/pick_operand" />
     </fragment>
     <fragment
         android:id="@+id/pick_operand"
@@ -20,11 +20,14 @@
         android:label="fragment_pick_operand"
         tools:layout="@layout/fragment_pick_operand">
         <action
+            android:id="@+id/pick_operand_to_pick_operand"
+            app:destination="@id/pick_operand" />
+        <action
             android:id="@+id/pick_operand_to_show_result"
-            app:destination="@id/show_result"/>
+            app:destination="@id/show_result" />
         <action
             android:id="@+id/pick_operand_to_select_operation"
-            app:destination="@id/select_operation"/>
+            app:destination="@id/select_operation" />
         <argument
             android:name="selectedOperation"
             android:defaultValue="@null"
@@ -38,7 +41,7 @@
         tools:layout="@layout/fragment_show_result">
         <action
             android:id="@+id/show_result_to_select_operation"
-            app:destination="@id/select_operation"/>
+            app:destination="@id/select_operation" />
     </fragment>
 
 </navigation>

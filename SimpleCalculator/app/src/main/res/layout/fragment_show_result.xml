@@ -9,10 +9,10 @@
 
     <TextView
         android:id="@+id/show_result_txt"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
+        android:gravity="center_horizontal"
         android:text="@string/show_result_title"
         android:textAlignment="center"
         android:textAllCaps="false"
@@ -27,10 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
-        android:text="TextView"
         android:gravity="center"
-        android:textSize="48sp"
+        android:text="TextView"
         android:textColor="@color/purple_700"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/show_result_txt" />
