@@ -20,9 +20,6 @@
         android:label="fragment_pick_operand"
         tools:layout="@layout/fragment_pick_operand">
         <action
-            android:id="@+id/pick_operand_to_pick_operand"
-            app:destination="@id/pick_operand"/>
-        <action
             android:id="@+id/pick_operand_to_show_result"
             app:destination="@id/show_result"/>
         <action

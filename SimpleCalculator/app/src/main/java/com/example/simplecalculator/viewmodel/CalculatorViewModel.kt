@@ -9,6 +9,11 @@ class CalculatorViewModel : ViewModel() {
 //    var selectedOperation = MutableLiveData<String>()
     var result = MutableLiveData<String>()
 
+    // todo: zero division
+    // todo: negative sqrt
+    // todo: invalid inputs, empty...
+    // todo: crash = java.lang.NumberFormatException: empty String
+    // todo: round the double val round(200.3456, 3);
     fun performOperation(operation: String,
                          operandOne: String,
                          operandTwo: String = "") {

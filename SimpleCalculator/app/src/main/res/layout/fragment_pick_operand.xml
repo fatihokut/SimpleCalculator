@@ -11,66 +11,94 @@
         android:id="@+id/pick_operand_txt"
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:text="@string/pick_operand_title"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <Button
-        android:id="@+id/add_operand_btn"
-        style="@style/Widget.AppCompat.Button.Borderless"
+    <TextView
+        android:id="@+id/equation_operation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/add_operand_button"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginTop="144dp"
+        android:text="EQ"
+        android:gravity="center"
+        android:textSize="48sp"
+        android:textColor="@color/purple_700"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pick_operand_txt" />
 
-    <Button
-        android:id="@+id/show_result_btn"
-        style="@style/Widget.AppCompat.Button.Borderless"
+    <TextView
+        android:id="@+id/equation_operand_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_result_button"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="144dp"
+        android:text="___"
+        android:gravity="end"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toStartOf="@id/equation_operation"
+        app:layout_constraintTop_toBottomOf="@+id/pick_operand_txt" />
+
+    <TextView
+        android:id="@+id/equation_operand_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="144dp"
+        android:text="___"
+        android:gravity="start"
+        android:textSize="48sp"
+        app:layout_constraintStart_toEndOf="@id/equation_operation"
+        app:layout_constraintTop_toBottomOf="@+id/pick_operand_txt" />
+
+    <EditText
+        android:id="@+id/add_params_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="144dp"
+        android:hint="Operand"
+        android:gravity="end"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toStartOf="@id/add_operand_btn"
+        app:layout_constraintTop_toBottomOf="@+id/equation_operation" />
+
+    <Button
+        android:id="@+id/add_operand_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:layout_marginTop="144dp"
+        android:text="@string/add_operand_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_operand_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/equation_operation" />
 
     <Button
         android:id="@+id/cancel_btn"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="72dp"
         android:text="@string/cancel_button"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/show_result_btn" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/show_result_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="72dp"
+        android:text="@string/show_result_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

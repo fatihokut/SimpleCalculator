@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">Simple Calculator</string>
 
-    <string name="select_operation_title">Select Operation</string>
-    <string name="pick_operand_button">Pick Operand</string>
+    <string name="select_operation_title">Select an operation to proceed</string>
+    <string name="pick_operand_button">Select Operation</string>
 
-    <string name="pick_operand_title">Select Operand</string>
+    <string name="pick_operand_title">Select the operands</string>
     <string name="add_operand_button">Add Operand</string>
     <string name="show_result_button">Show Result</string>
     <string name="cancel_button">Cancel</string>
 
-    <string name="show_result_title">Result</string>
+    <string name="show_result_title">Result of the operation</string>
     <string name="new_operation_button">New Operation</string>
 
     <string-array name="operation_list">
