@@ -38,7 +38,6 @@ class PickOperandFragment : Fragment() {
         }
 
         binding.addOperandBtn.setOnClickListener {
-            // todo: move this block to updateEquation()
             if (binding.addParamsEdittext.text.toString().isEmpty()) {
                 Toast.makeText(context, "Operands can not be empty!", Toast.LENGTH_SHORT).show()
             } else {
@@ -95,10 +94,6 @@ class PickOperandFragment : Fragment() {
     override fun onDestroyView() {
         pickOperandBinding = null
         super.onDestroyView()
-    }
-
-    private fun updateEquation() {
-        // todo
     }
 
     private fun toNotation(op: String): String {
