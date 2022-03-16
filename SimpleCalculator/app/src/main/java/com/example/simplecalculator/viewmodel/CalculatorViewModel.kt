@@ -17,11 +17,6 @@ class CalculatorViewModel : ViewModel() {
         operandOne: String,
         operandTwo: String = ""
     ) {
-        val inputType: InputType =
-            if (operandOne.toIntOrNull() != null && operandTwo.toIntOrNull() != null)
-                InputType.INTEGER
-            else
-                InputType.DOUBLE
 
         when (activeOperation.value) {
             "Addition" -> {
@@ -48,11 +43,6 @@ class CalculatorViewModel : ViewModel() {
 
     fun setActiveOperation(operation: String) {
         _activeOperation.value = operation
-    }
-
-    enum class InputType {
-        INTEGER,
-        DOUBLE
     }
 
 }
