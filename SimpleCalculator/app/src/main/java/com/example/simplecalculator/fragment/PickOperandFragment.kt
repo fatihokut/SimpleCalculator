@@ -31,61 +31,50 @@ class PickOperandFragment : Fragment() {
 
         model.activeOperation.observe(viewLifecycleOwner) { newOperation ->
             selectedOperation = newOperation
-            binding.equationOperation.text = toNotation(selectedOperation)
-            if (selectedOperation == "Square Root") {
+            binding.equationOperation.text = getNotation(selectedOperation)
+            if (selectedOperation == "Square Root")
                 binding.equationOperandLeft.visibility = View.INVISIBLE
-            }
         }
 
         binding.addOperandBtn.setOnClickListener {
-            if (binding.addParamsEdittext.text.toString().isEmpty()) {
-                Toast.makeText(context, "Operands can not be empty!", Toast.LENGTH_SHORT).show()
-            } else {
-                if (selectedOperation != "Square Root") {
-                    if (operandOne.isEmpty()) {
-                        operandOne = binding.addParamsEdittext.text.toString()
-                        binding.equationOperandLeft.text = operandOne
-                        binding.addParamsEdittext.text.clear()
-                    } else if (operandTwo.isEmpty()) {
-                        operandTwo = binding.addParamsEdittext.text.toString()
-                        binding.equationOperandRight.text = operandTwo
-                        binding.addParamsEdittext.text.clear()
-                        binding.addOperandBtn.isEnabled = false
-                        binding.addOperandBtn.isClickable = false
-                    }
-                } else {
-                    if (operandOne.isEmpty()) {
-                        operandOne = binding.addParamsEdittext.text.toString()
-                        binding.equationOperandRight.text = operandOne
-                        binding.addParamsEdittext.text.clear()
-                        binding.addOperandBtn.isEnabled = false
-                        binding.addOperandBtn.isClickable = false
-                    }
-                }
-            }
+            if (binding.addParamsEdittext.text.toString().isEmpty()) Toast.makeText(
+                context,
+                "Operands can not be empty",
+                Toast.LENGTH_SHORT
+            ).show() else addOperand()
         }
 
         binding.showResultBtn.setOnClickListener {
             try {
                 model.performOperation(operandOne, operandTwo)
-                Navigation.findNavController(binding.root).navigate(R.id.pick_operand_to_show_result)
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.pick_operand_to_show_result)
             } catch (e: IllegalArgumentException) {
-                Toast.makeText(context, "IllegalArgumentException", Toast.LENGTH_LONG).show()
-                Navigation.findNavController(binding.root).navigate(R.id.pick_operand_to_pick_operand)
+                Toast.makeText(context, "Operands can not be empty", Toast.LENGTH_LONG).show()
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.pick_operand_to_pick_operand)
             } catch (e: ArithmeticException) {
-                Toast.makeText(context, "ArithmeticException", Toast.LENGTH_LONG).show()
-                Navigation.findNavController(binding.root).navigate(R.id.pick_operand_to_pick_operand)
+                Toast.makeText(context, "Zero divisions are not allowed", Toast.LENGTH_LONG).show()
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.pick_operand_to_pick_operand)
             } catch (e: IndexOutOfBoundsException) {
-                Toast.makeText(context, "IndexOutOfBoundsException", Toast.LENGTH_LONG).show()
-                Navigation.findNavController(binding.root).navigate(R.id.pick_operand_to_pick_operand)
+                Toast.makeText(
+                    context,
+                    "Can not calculate square root of a negative number",
+                    Toast.LENGTH_LONG
+                ).show()
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.pick_operand_to_pick_operand)
             } catch (e: UnsupportedOperationException) {
-                Toast.makeText(context, "UnsupportedOperationException", Toast.LENGTH_LONG).show()
-                Navigation.findNavController(binding.root).navigate(R.id.pick_operand_to_pick_operand)
+                Toast.makeText(context, "Operation is not supported", Toast.LENGTH_LONG).show()
+                Navigation.findNavController(binding.root)
+                    .navigate(R.id.pick_operand_to_pick_operand)
             }
         }
 
         binding.cancelBtn.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.pick_operand_to_select_operation)
+            Navigation.findNavController(binding.root)
+                .navigate(R.id.pick_operand_to_select_operation)
         }
 
         return binding.root
@@ -96,7 +85,31 @@ class PickOperandFragment : Fragment() {
         super.onDestroyView()
     }
 
-    private fun toNotation(op: String): String {
+    private fun addOperand() {
+        when {
+            (selectedOperation == "Square Root") && (operandOne.isEmpty()) -> {
+                operandOne = pickOperandBinding?.addParamsEdittext?.text.toString()
+                pickOperandBinding?.equationOperandRight?.text = operandOne
+                pickOperandBinding?.addParamsEdittext?.text?.clear()
+                pickOperandBinding?.addOperandBtn?.isEnabled = false
+                pickOperandBinding?.addOperandBtn?.isClickable = false
+            }
+            (selectedOperation != "Square Root") && (operandOne.isEmpty()) -> {
+                operandOne = pickOperandBinding?.addParamsEdittext?.text.toString()
+                pickOperandBinding?.equationOperandLeft?.text = operandOne
+                pickOperandBinding?.addParamsEdittext?.text?.clear()
+            }
+            (selectedOperation != "Square Root") && (operandOne.isNotEmpty()) -> {
+                operandTwo = pickOperandBinding?.addParamsEdittext?.text.toString()
+                pickOperandBinding?.equationOperandRight?.text = operandTwo
+                pickOperandBinding?.addParamsEdittext?.text?.clear()
+                pickOperandBinding?.addOperandBtn?.isEnabled = false
+                pickOperandBinding?.addOperandBtn?.isClickable = false
+            }
+        }
+    }
+
+    private fun getNotation(op: String): String {
         return when (op) {
             "Addition" -> "+"
             "Subtraction" -> "-"
